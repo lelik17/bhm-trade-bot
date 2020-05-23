@@ -105,6 +105,8 @@ function check_for_arbitrage($ticker, $need_profit, $task_id, $min_trade, $max_t
 										$order_id = $result->data->orderId;
 										mysqli_query($linksql, "INSERT INTO orders SET code='".$result->code."', bhid='$order_id', symbol='$symbol', side='$side', price='$price', quantity='$quantity', date=NOW(), task_id='$task_id'");
 
+										sleep(1);
+
 										$params = array();
 										$params["symbol"] = $symbol;
 										$result = bithumb_query("spot/openOrders", $params, $task["api_key"], $task["secret"]);
